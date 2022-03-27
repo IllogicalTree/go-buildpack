@@ -14,8 +14,31 @@ output_dir=$(mktemp -d -t finalizeXXX)
 echo "-----> Installing ibmdb2 drivers"
 pushd $BUILDPACK_DIR
 GOROOT=$GoInstallDir
+
 $GoInstallDir/bin/go get -d github.com/ibmdb/go_ibm_db
+cd $HOME
+pwd
+ls -alg
+
+cd $HOME/go
+pwd
+ls -alg
+
+cd /home/vcap/go
+pwd
+ls -alg
+
+cd /home/vcap/go/pkg/mod/github.com
+pwd
+ls -alg
+
+cd /home/vcap/go/pkg/mod/github.com/ibmdb
+pwd
+ls -alg
+
 cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db/installer
+pwd
+ls -alg
 $GoInstallDir/bin/go run setup.go
 source setenv.sh
 popd

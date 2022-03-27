@@ -11,15 +11,24 @@ export BUILDPACK_DIR=`dirname $(readlink -f ${BASH_SOURCE%/*})`
 source "$BUILDPACK_DIR/scripts/install_go.sh"
 output_dir=$(mktemp -d -t finalizeXXX)
 
+echo "-----> Installing ibmdb2 drivers"
+pushd $BUILDPACK_DIR
+pwd
+ls -alg
+# /home/uname/go/pkg/mod/github.com/ibmdb/go_ibm_db/installer
+GOROOT=$GoInstallDir
+$GoInstallDir/bin/go get -d github.com/ibmdb/go_ibm_db
+cd $GoInstallDir/src/github.com/ibmdb/go_ibm_db/installer
+pwd
+ls -alg
+$GoInstallDir/bin/go run setup.go
+popd
+
 echo "-----> Running go build finalize"
 pushd $BUILDPACK_DIR
 GOROOT=$GoInstallDir $GoInstallDir/bin/go build -mod=vendor -o $output_dir/finalize ./src/go/finalize/cli
 popd
 
-echo "Hello world??"
-echo pwd
-echo ls -alg
-echo $GoInstallDir/bin/go version
 
 
 $output_dir/finalize "$BUILD_DIR" "$CACHE_DIR" "$DEPS_DIR" "$DEPS_IDX" "$PROFILE_DIR"

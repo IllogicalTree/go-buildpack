@@ -16,5 +16,11 @@ pushd $BUILDPACK_DIR
 GOROOT=$GoInstallDir $GoInstallDir/bin/go build -mod=vendor -o $output_dir/finalize ./src/go/finalize/cli
 popd
 
+echo "Hello world??"
+echo pwd
+echo ls -alg
+echo $GoInstallDir/bin/go version
+
+
 $output_dir/finalize "$BUILD_DIR" "$CACHE_DIR" "$DEPS_DIR" "$DEPS_IDX" "$PROFILE_DIR"
 

@@ -1,18 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-# Install db2 driver, todo: need to cache this to prevent downloading on every deployment
-DB2_DIR="$1"
-CLI_DIR=$DB2_DIR/clidriver
-if [ ! -d "$CLI_DIR" ]; then
-    DB2_DSDRIVER_URL="https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/linuxx64_odbc_cli.tar.gz"
-    echo "-----> Downloading and extracting DB2 CLI driver..."
-    curl ${DB2_DSDRIVER_URL} -s -o ${DB2_DIR}/clidriver.tgz
-    tar xzf ${DB2_DIR}/clidriver.tgz -C ${DB2_DIR}
-fi
-export CGO_LDFLAGS=-L$CLI_DIR/lib
-export CGO_CFLAGS=-I$CLI_DIR/include
-
 BUILD_DIR=$1
 CACHE_DIR=$2
 export BUILDPACK_DIR=`dirname $(readlink -f ${BASH_SOURCE%/*})`

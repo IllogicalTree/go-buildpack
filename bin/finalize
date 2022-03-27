@@ -22,11 +22,11 @@ cd /home/vcap/go/pkg/mod/github.com/ibmdb
 pwd
 ls -alg
 
-cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db@v1.7.4
+cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db@v0.4.1
 pwd
 ls -alg
 
-cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db@v1.7.4/installer
+cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db@v0.4.1/installer
 pwd
 ls -alg
 $GoInstallDir/bin/go run setup.go

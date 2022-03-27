@@ -13,23 +13,9 @@ output_dir=$(mktemp -d -t finalizeXXX)
 
 echo "-----> Installing ibmdb2 drivers"
 pushd $BUILDPACK_DIR
-pwd
-ls -alg
-$GoInstallDir/bin/go env GOPATH
-# /home/uname/go/pkg/mod/github.com/ibmdb/go_ibm_db/installer
-GOROOT=$GoInstallDir
-echo $HOME
-cd $HOME
-cd go
-pwd
-ls -alg
-
-cd $BUILDPACK_DIR
-$GoInstallDir/bin/go get -d github.com/ibmdb/go_ibm_db
-cd $GoInstallDir/src/github.com/ibmdb/go_ibm_db/installer
-pwd
-ls -alg
-$GoInstallDir/bin/go run setup.go
+cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db/installer
+GOROOT=$GoInstallDir $GoInstallDir/bin/go run setup.go
+source setenv.sh
 popd
 
 echo "-----> Running go build finalize"

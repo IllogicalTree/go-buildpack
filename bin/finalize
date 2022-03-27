@@ -15,28 +15,18 @@ echo "-----> Installing ibmdb2 drivers"
 pushd $BUILDPACK_DIR
 GOROOT=$GoInstallDir
 
-$GoInstallDir/bin/go get -d github.com/ibmdb/go_ibm_db
-cd $HOME
-pwd
-ls -alg
+$GoInstallDir/bin/go get -d github.com/ibmdb/go_ibm_db@v0.4.1
 
-cd $HOME/go
-pwd
-ls -alg
-
-cd /home/vcap/go
-pwd
-ls -alg
-
-cd /home/vcap/go/pkg/mod/github.com
-pwd
-ls -alg
 
 cd /home/vcap/go/pkg/mod/github.com/ibmdb
 pwd
 ls -alg
 
-cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db/installer
+cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db@v1.7.4
+pwd
+ls -alg
+
+cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db@v1.7.4/installer
 pwd
 ls -alg
 $GoInstallDir/bin/go run setup.go

@@ -18,18 +18,16 @@ $GoInstallDir/bin/go get -d github.com/ibmdb/go_ibm_db@v0.4.1
 cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db@v0.4.1/installer
 $GoInstallDir/bin/go run setup.go
 
-systeminfo
-free
 
-#pwd
-#ls -alg
+pwd
+ls -alg
 
 
-# export DB2HOME=$HOME/go/src/github.com/ibmdb/clidriver
-# export LD_LIBRARY_PATH=$HOME/go/src/github.com/ibmdb/clidriver/lib
-# export CGO_CFLAGS=-I$DB2HOME/include
-# export CGO_LDFLAGS=-L$DB2HOME/lib
-# export PATH=$PATH:$DB2HOME/bin
+export DB2HOME=$HOME/go/src/github.com/ibmdb/clidriver
+export LD_LIBRARY_PATH=$HOME/go/src/github.com/ibmdb/clidriver/lib
+export CGO_CFLAGS=-I$DB2HOME/include
+export CGO_LDFLAGS=-L$DB2HOME/lib
+export PATH=$PATH:$DB2HOME/bin
 
 popd
 

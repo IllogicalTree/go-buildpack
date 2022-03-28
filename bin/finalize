@@ -29,7 +29,7 @@ echo "-----> Running go build finalize"
 pushd $BUILDPACK_DIR
 
 #$GoInstallDir/bin/go mod vendor
-GOROOT=$GoInstallDir $GoInstallDir/bin/go build -o $output_dir/finalize ./src/go/finalize/cli
+GOROOT=$GoInstallDir $GoInstallDir/bin/go build -mod=mod -o $output_dir/finalize ./src/go/finalize/cli
 popd
 
 

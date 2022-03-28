@@ -28,8 +28,12 @@ popd
 
 echo "-----> Running go build finalize"
 pushd $BUILDPACK_DIR
-export GOPACKAGENAME="project-browser-game/m/v2"
+pwd
+ls -alg
+export GOPACKAGENAME="m"
 GOROOT=$GoInstallDir $GoInstallDir/bin/go build -mod=mod -o $output_dir/finalize ./src/go/finalize/cli
+pwd
+ls -alg
 popd
 
 

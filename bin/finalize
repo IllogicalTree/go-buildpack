@@ -18,24 +18,14 @@ $GoInstallDir/bin/go get -d github.com/ibmdb/go_ibm_db@v0.4.1
 cd $HOME/go/pkg/mod/github.com/ibmdb/go_ibm_db@v0.4.1/installer
 $GoInstallDir/bin/go run setup.go
 
-if [ "$DB2HOME" == "" ]
-then
-    cd ../../
-    DB2HOME=`pwd`/clidriver
-fi
+pwd
+ls -alg
 
-OS=`uname`
 
+export DB2HOME=$HOME/go/src/github.com/ibmdb/clidriver
+export LD_LIBRARY_PATH=$HOME/go/src/github.com/ibmdb/clidriver/lib
 export CGO_CFLAGS=-I$DB2HOME/include
 export CGO_LDFLAGS=-L$DB2HOME/lib
-
-if [ "$OS" == "Darwin" ]
-then
-    export DYLD_LIBRARY_PATH=$DB2HOME/lib:$DYLD_LIBRARY_PATH
-else
-    export LD_LIBRARY_PATH=$DB2HOME/lib:$LD_LIBRARY_PATH
-fi
-
 export PATH=$PATH:$DB2HOME/bin
 
 popd

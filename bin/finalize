@@ -23,12 +23,12 @@ export LD_LIBRARY_PATH=$HOME/go/src/github.com/ibmdb/clidriver/lib
 export CGO_CFLAGS=-I$DB2HOME/include
 export CGO_LDFLAGS=-L$DB2HOME/lib
 export PATH=$PATH:$DB2HOME/bin
+export GOPACKAGENAME="project-browser-game/m/v2"
 popd
 
 echo "-----> Running go build finalize"
 pushd $BUILDPACK_DIR
-
-#$GoInstallDir/bin/go mod vendor
+export GOPACKAGENAME="project-browser-game/m/v2"
 GOROOT=$GoInstallDir $GoInstallDir/bin/go build -mod=mod -o $output_dir/finalize ./src/go/finalize/cli
 popd
 
